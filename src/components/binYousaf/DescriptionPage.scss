@@ -1,0 +1,319 @@
+@media screen and (min-width: 768px) {
+    .Main{
+        margin-top: 19vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .Details1{
+            .Artical_Images{
+                display: flex;
+                flex-direction: column;
+                #pic{
+                    margin-top: 2%;
+                    height: auto;
+                    width: 480px;
+                }
+                .NP-M{
+                    display: none;
+                }
+                .imgsDiv{
+                    width: 474px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    margin-top: 2%;
+                    .sliderImgs{
+                        height: auto;
+                        width: 115px;
+                        margin-left: 5px;
+                        cursor: pointer;
+                    }
+                } 
+            }
+            .ProductDetails{
+                margin-top: 2%;
+                margin-left: -5%;
+                .NP-R{
+                    #Name{
+                        color: black;
+                        font-family: 'Russo One';
+                        font-size: 25px;
+                    }
+                    #Price{
+                        margin-top: 3%;
+                        color: rgb(246, 147, 34);
+                        font-size: 18px;
+                    }
+                }
+                .sizes{
+                    margin: 3% 0px;
+                }
+                .quantity{
+                    margin: 3% 0px;
+                    display: flex;
+                    flex-direction: row;
+                    .quan_btns{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        width: 120px;
+                        height: 40px;
+                        font-size: 25px;
+                        .Dec{
+                            cursor: pointer;
+                        }
+                        .Count{
+                            font-size: 25px;
+                        }
+                        .Inc{
+                            cursor: pointer;
+                        }
+                    }
+                    .Cartbtn{
+                        width: 160px;
+                        height: 40px;
+                        color: white;
+                        padding: 5px 30px;
+                        background-color: rgb(50, 50, 50);
+                        cursor: pointer;
+                        border: none;
+                    }
+                    .Cartbtn:hover{
+                        background-color: rgb(246, 147, 34);
+                        transition: background-color 0.3s ease-in-out;
+                    }
+                }
+                .detialbtns{
+                    width: 280px;
+                    height: 40px;
+                    color: white;
+                    padding: 5px 30px;
+                    background-color:  rgb(50, 50, 50);;
+                    border: none;
+                    cursor: pointer;
+                }
+                .detialbtns:hover{
+                    background-color: rgb(246, 147, 34);
+                    transition: background-color 0.3s ease-in-out;
+                }
+                .ProdCat{
+                    margin-top: 7%;
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 18px;
+                    .heading{
+                        font-family: 'Russo One';
+                        color: rgb(82, 81, 81);
+                    }
+                    .value{
+                        margin-left: 1%;
+                        color: rgb(255, 141, 11);
+                    }
+                }
+            }
+            #stock{
+                margin: 4% 0px;
+                font-family: 'Russo One';
+                font-size: 15px;
+            }
+            h4{
+                margin-top: 5%;
+                margin-bottom: 3%;
+                color: black;
+                font-family: 'Russo One';
+            }
+        }
+    }
+    h3{
+        text-align: center;
+        font-family: 'Russo One';
+        margin: 5% 0px;
+    }
+    .Details2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .Artical{
+            width: 320px;
+            height: auto;
+            cursor: pointer;
+            margin: 0px 15px;
+        }
+        .Artical:hover{
+            transform: scale(1.020);
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+    .Name{
+        text-align: center;
+        color: black;
+        width: 320px;
+        font-family: 'Russo One';
+        font-size: 20px;
+        margin-top: 2.5%;
+        margin-left: 0%;
+        cursor: pointer;
+        margin-left: 5%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .Main{
+        margin-top: 19vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .Details1{
+            .Artical_Images{
+                display: flex;
+                flex-direction: row;
+                .NP-M{
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 14%;
+                    .NAME-M{
+                        margin-top: 2%;
+                        color: black;
+                        font-family: 'Russo One';
+                        font-size: 21px;
+                    }
+                    .PRC-M{
+                        margin-top: -5%;
+                        color: rgb(246, 147, 34);
+                        font-size: 18px;
+                    }
+                }
+                .imgWRAP{
+                    #pic{
+                        margin-left: 19%;
+                        height: auto;
+                        width: 47vw;
+                    }
+                }
+                .imgsDiv{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-left: -109%;
+                    .sliderImgs{
+                        width: 11.6vw;
+                        margin-bottom: 2%;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .ProductDetails{
+                margin-top: 2%;
+                .NP-R{
+                    display: none;
+                }
+                .sizes{
+                    margin: 3% 0px;
+                }
+                .quantity{
+                    margin: 3% 0px;
+                    display: flex;
+                    flex-direction: row;
+                    .quan_btns{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        width: 120px;
+                        height: 40px;
+                        font-size: 25px;
+                        .Dec{
+                            cursor: pointer;
+                        }
+                        .Count{
+                            font-size: 25px;
+                        }
+                        .Inc{
+                            cursor: pointer;
+                        }
+                    }
+                    .Cartbtn{
+                        width: 160px;
+                        height: 40px;
+                        color: white;
+                        padding: 5px 30px;
+                        background-color: rgb(50, 50, 50);
+                        cursor: pointer;
+                        border: none;
+                    }
+                    .Cartbtn:hover{
+                        background-color: rgb(246, 147, 34);
+                        transition: background-color 0.3s ease-in-out;
+                    }
+                }
+                .detialbtns{
+                    width: 280px;
+                    height: 40px;
+                    color: white;
+                    padding: 5px 30px;
+                    background-color:  rgb(50, 50, 50);;
+                    border: none;
+                    cursor: pointer;
+                }
+                .detialbtns:hover{
+                    background-color: rgb(246, 147, 34);
+                    transition: background-color 0.3s ease-in-out;
+                }
+                .ProdCat{
+                    margin-top: 7%;
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 18px;
+                    .heading{
+                        font-family: 'Russo One';
+                        color: rgb(82, 81, 81);
+                    }
+                    .value{
+                        margin-left: 1%;
+                        color: rgb(255, 141, 11);
+                    }
+                }
+            }
+            #stock{
+                margin: 4% 0px;
+                font-family: 'Russo One';
+                font-size: 15px;
+            }
+            h4{
+                margin-top: 5%;
+                margin-bottom: 3%;
+                color: black;
+                font-family: 'Russo One';
+            }
+        }
+    }
+    h3{
+        text-align: center;
+        font-family: 'Russo One';
+        margin: 5% 0px;
+    }
+    .Details2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .Artical{
+            width: 27vw;
+            margin: 0px 15px;
+            height: auto;
+            cursor: pointer;
+        }
+        .Artical:hover{
+            transform: scale(1.020);
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+    .Name{
+        width: 27vw;
+        text-align: center;
+        color: black;
+        font-family: 'Russo One';
+        font-size: 18px;
+        margin-top: 2.5%;
+        margin-left: 6.5%;
+        cursor: pointer;
+    }
+}
+

@@ -1,0 +1,105 @@
+.DH-Div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 10vh;
+    width: 80vw;
+    background-color: rgb(197, 197, 197);
+    margin: 0%;
+    align-items: center;
+    .ProfileSettings{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 5%;
+        .sicn{
+            font-size: 30px;
+        }
+       .sicn:hover{
+            cursor: pointer;
+       }
+       p{
+            margin-top: 12.5%;
+            font-size: 16px;
+       }
+    }
+    .ProfileDetails{
+        position: relative;
+        display: flex;
+        margin-right: 10%;
+        flex-direction: row;
+        align-items: center;
+        width: 22vw;
+        .Msg-Div{
+            display: flex;
+            flex-direction: column;
+            .MsgIcn{
+                font-size: 30px;
+            }
+            .counter{
+                position: absolute;
+                background-color: red;
+                top: 5%;
+                left: 7%;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 18px;
+                height: 18px;
+                font-size: 12px;
+                border-radius: 100%;
+            }
+        }
+        .PImg{
+            margin-left: 5%;
+            width: 35px;
+            height: 35px;
+            border-radius: 100%;
+        }
+        .PRName{
+            margin-top: 5.5%;
+            font-size: 16px;
+            margin-left: 5%;
+        }
+        .ArdDIV{
+            position: relative;
+            .ARDDIcn{
+                font-size: 30px;
+                margin-left: 2%;
+                cursor: pointer;
+            }
+            .PFPointyHead{
+                width: 20px;
+                height: 30px;
+                position: absolute;
+                right: 42%;
+                top: 100%;
+                background-color: #7979b7;
+                transform: skewY(-45deg);
+                z-index: 300;
+            }
+            .PFDiv{
+                z-index: 310;
+                width: 100px;
+                height: max-content;
+                position: absolute;
+                right: -100%;
+                top: 110%;
+                background-color: #7979b7;
+                color: #020c35;
+                border-radius: 10px;
+                padding: 1vh 0px;
+                text-decoration: none;
+                p{
+                    color: #020c35;
+                    text-decoration: none;
+                    font-size: 15px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

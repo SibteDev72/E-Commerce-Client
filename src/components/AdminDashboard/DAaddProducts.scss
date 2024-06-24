@@ -1,0 +1,96 @@
+.MAIN_DIV{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    .CatButtons{
+        display: flex;
+        flex-direction: row;
+        .AddNew{
+            background-color: rgb(2, 12, 53);
+            border: none;
+            color: white;
+            padding: 5px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 5px;
+        }
+        .AddNew:hover{
+            background-color: rgb(121, 121, 183);             
+            transition: background-color 0.2s ease-in-out;
+        }
+        .deleteExistingCat{
+            background-color: rgb(2, 12, 53);
+            color: white;
+            border: none;
+            padding: 5px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 5px;
+        }
+        .deleteExistingCat:hover{
+            background-color: rgb(121, 121, 183);             
+            transition: background-color 0.2s ease-in-out;
+        }
+    }
+    .catDiv{
+        margin-right: 15%;
+        margin-top: 5%;
+        .catList{
+            margin-top: 10%;
+            font-size: 18px;
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+        }
+        .deleteButtons{
+            position: absolute;
+            right: 50%;
+            cursor: pointer;
+        }
+    }
+    Form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        height: max-content;
+        .formgroup{
+            margin-top: 10px;
+            width: 400px;
+        }
+        .labels{
+            margin: 10px 0px;
+        }
+        .PDesc{
+            width: 60vw;
+            height: 200px;
+        }
+        button{
+            margin: 10px 0px;
+            width: 130px;
+            padding: 0% 5px;
+            height: 50px;
+            color: white;
+            background-color: rgb(2, 12, 53);  
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color: rgb(121, 121, 183);
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .checkboxes{
+            display: flex;
+            flex-direction: row;
+            div{
+                display: flex;
+                flex-direction: row;
+                margin: 0px 5px;
+            }
+        }
+    }
+}

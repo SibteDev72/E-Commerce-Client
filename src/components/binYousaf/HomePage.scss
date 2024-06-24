@@ -1,0 +1,350 @@
+@media screen and (min-width: 768px) {
+    .slider_imgs{
+        margin-left: 2%;
+        width: 95vw;
+        height: auto;
+        z-index: 1;
+    }
+    .main_Icons{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        z-index: 200;
+        position: absolute;
+        top: 6%;
+        width: 100vw;
+        .burgerNav{
+            margin-right: 25%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+        }
+        .logo{
+            width: 105px;
+            cursor: pointer;
+        }
+        .right_icons{
+            margin-left: 25%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            p{
+                position: absolute;
+                top: 31%;
+                right: 17.5%;
+                background-color: rgb(194, 126, 0);
+                width: 16px;
+                height: 16px;
+                border-radius: 100%;
+                font-size: 13px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .fav{
+                position: absolute;
+                top: 31%;
+                right: 13.4%;
+                background-color: rgb(194, 126, 0);
+                width: 18px;
+                height: 18px;
+                border-radius: 100%;
+                font-size: 14px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .ics{
+                width: 30px;
+                height: 30px;
+                margin: 0% 8px;
+                cursor: pointer;   
+            }
+        }
+    }
+    .MainDiv{
+        margin-top: 2%;
+        .Wrap{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .home_art{
+                cursor: pointer;
+                width: 26vw;
+                height: auto;
+            }
+            .home_art:hover{
+                transform: scale(1.020);
+                transition: transform 0.5s ease-in-out;
+            }
+            .caption{
+                font-family: 'Russo One';
+                color: rgb(72, 72, 72);
+                width: 26vw;
+                text-align: center;
+            }
+        }
+        h1{
+            font-family: 'Russo One';
+        }
+        h6{
+            margin-bottom: 2%;
+        }
+        .NewsLetter{
+            margin: 5% 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .NLText{
+                text-align: center;
+                margin-top: 2%;
+                font-size: 18px;
+            }
+            .NL-FORM{
+                display: flex;
+                flex-direction: row;
+                .Emailform{
+                    color: black;
+                    width: 40vw;
+                    height: 60px;
+                    border: 1px solid rgb(187, 187, 187);
+                    border-radius: 0%;
+                }
+                .SignUp-BTN{
+                    background-color: black;
+                    color: white;
+                    font-size: 13px;
+                    width: 70px;
+                    border: none;
+                    padding: 5px 10px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    .RA{
+                        width: 40px;
+                        height: auto;
+                    }
+                }
+                .SignUp-BTN:hover{
+                    background-color: rgb(246, 147, 34);
+                    transition: background-color 0.2s ease-in-out;
+                }
+            }
+        }
+    }
+    #SideMenu{
+        .MenuCloseIcon{
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-self: flex-end;
+            margin-right: 12px;
+            font-size: 40px;
+        }
+        .MenuCloseIcon:hover{
+            animation: rotate-image 0.2s linear forwards;
+            color: rgb(246, 147, 34);
+            transition: color 0.20s ease-in-out;
+        }
+        span{
+            padding-top: 35px;
+            cursor: pointer;
+            margin-left: 12%;
+        }
+        span:hover{
+            color: rgb(246, 147, 34);
+            transition: color 0.20s ease-in-out;
+        }
+    }
+    #CartSlider{
+        .CartCloseIcon{
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-self: flex-end;
+            margin-right: 12px;
+            font-size: 40px;
+            margin-top: 20%;
+        }
+        .CartCloseIcon:hover{
+            animation: rotate-image 0.2s linear forwards;
+            color: rgb(246, 147, 34);
+            transition: color 0.20s ease-in-out;
+        }
+        .Heading{
+            color: black;
+            font-family: 'Russo One';
+            font-size: 25px;
+            margin-top: 10%;
+            margin-bottom: -1%;
+            margin-left: 5%;
+        }
+        .CartDiv{
+            margin-top: 10%;
+            .Cart_Details{
+                display: flex;
+                flex-direction: row;
+                margin-left: 2%;
+                margin-bottom: 4%;
+                .cartImage{
+                    width: auto;
+                    height: 100px;
+                }
+                .del-btn{
+                    position: absolute;
+                    right: 10%;
+                    font-size: 24px;
+                    cursor: pointer;
+                }
+                .del-btn:hover{
+                    animation: rotate-image 0.2s linear forwards;
+                    color: rgb(246, 147, 34);
+                    transition: color 0.20s ease-in-out;
+                }
+                .Div{
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 2%;
+                    .CName{
+                        font-size: 16px;
+                    }
+                    .CSize{
+                        margin-top: -10%;
+                        font-size: 14px;
+                    }
+                    .CPrice{
+                        margin-top: -10%;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .Sub-Btn-Div{
+                display: flex;
+                flex-direction: column;
+                margin-top: 4%;
+                margin-left: 2%;
+                margin-bottom: 8%;
+                .SubTotal{
+                    display: flex;
+                    flex-direction: row;
+                    .Head{
+                        font-weight: bold;
+                        font-size: 18px;
+                        margin-top: 0%;
+                    }
+                    .Total{
+                        font-size: 18px;
+                        margin-left: 52%;
+                    }
+                }
+                .cart-Btns{
+                    align-self: center;
+                    width: 350px;
+                    height: 50px;
+                    margin: 10px 0px;
+                    color: white;
+                    padding: 5px 30px;
+                    background-color:  rgb(50, 50, 50);;
+                    border: none;
+                    cursor: pointer;
+                }
+                .cart-Btns:hover{
+                    background-color: rgb(246, 147, 34);
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+} 
+@media screen and (max-width: 767px) {
+    .slider_imgs{
+        margin-top: 19vh;
+        width: 100vw;
+        height: auto;
+    }
+    .main_Icons{
+        display: none;
+    }
+    .MainDiv{
+        margin-top: 2%;
+        h1{
+            font-family: 'Russo One';
+        }
+        h6{
+            margin-bottom: 5%;
+        }
+        .Wrap{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .home_art{
+                cursor: pointer;
+                width: 33vw;
+                height: auto;
+            }
+            .home_art:hover{
+                transform: scale(1.020);
+                transition: transform 0.5s ease-in-out;
+            }
+            .caption{
+                font-family: 'Russo One';
+                color: rgb(72, 72, 72);
+                width: 35vw;
+                font-size: 20px;
+                text-align: center;
+            }
+        }
+        .NewsLetter{
+            margin: 5% 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .NLText{
+                text-align: center;
+                margin-top: 2%;
+                font-size: 18px;
+            }
+            .NL-FORM{
+                display: flex;
+                flex-direction: row;
+                .Emailform{
+                    color: black;
+                    width: 62vw;
+                    height: 50px;
+                    border: 1px solid rgb(187, 187, 187);
+                    border-radius: 0%;
+                }
+                .SignUp-BTN{
+                    background-color: black;
+                    color: white;
+                    font-size: 13px;
+                    width: 70px;
+                    border: none;
+                    padding: 5px 10px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    .RA{
+                        width: 40px;
+                        height: auto;
+                    }
+                }
+                .SignUp-BTN:hover{
+                    background-color: rgb(246, 147, 34);
+                    transition: background-color 0.2s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+   
+   

@@ -1,0 +1,134 @@
+@media screen and (min-width: 768px) {
+  .Filter{
+    display: flex;
+    flex-direction: row;
+    margin-top: 19vh;
+    .category{
+      margin-top: 1%;
+      width: 35vw;
+      .Cat_heading{
+        font-family: 'Russo One';
+        font-size: 25px;
+        margin-left: 10%;
+        margin-bottom: 15%;
+      }
+      .list{
+        list-style-type: none;
+        .elements{
+          font-size: 18px;
+          margin-top: 25px;
+          cursor: pointer;
+        }
+        .elements:hover{
+          color: rgb(246, 147, 34);
+          transition: color 0.20s ease-in-out;
+        }
+      }
+    }
+    .Wrap{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .Name{
+        text-align: center;
+        color: black;
+        width: 260px;
+        font-family: 'Russo One';
+        font-size: 20px;
+        margin-top: 2.5%;
+        margin-bottom: -1%;
+        cursor: pointer;
+      }
+      .Prc{
+        text-align: center;
+        color: rgb(246, 147, 34);
+        width: 260px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .Artical{
+        width: 260px;
+        height: auto;
+        cursor: pointer;
+      }
+      .Artical:hover{
+        transform: scale(1.020);
+        transition: transform 0.5s ease-in-out;
+      }
+    }
+    .NoPRD{
+      margin-top: 2%;
+      margin-left: 2%;
+      font-size: 20px;
+      font-family: 'Russo One';
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .Filter{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 19vh;
+    .category{
+      margin-top: 1%;
+      width: 35vw;
+      .Cat_heading{
+        font-family: 'Russo One';
+        font-size: 22px;
+        margin-left: 10%;
+        margin-bottom: 10%;
+      }
+      .list{
+        list-style-type: none;
+        .elements{
+          font-size: 16px;
+          margin-top: 20px;
+          cursor: pointer;
+        }
+        .elements:hover{
+          color: rgb(246, 147, 34);
+          transition: color 0.20s ease-in-out;
+        }
+      }
+    }
+    .Wrap{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .Name{
+        text-align: center;
+        color: black;
+        width: 38vw;
+        font-family: 'Russo One';
+        font-size: 20px;
+        margin-top: 2.5%;
+        margin-bottom: -1%;
+        cursor: pointer;
+      }
+      .Prc{
+        text-align: center;
+        color: rgb(246, 147, 34);
+        width: 38vw;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .Artical{
+        width: 33vw;
+        height: auto;
+        cursor: pointer;
+      }
+      .Artical:hover{
+        transform: scale(1.020);
+        transition: transform 0.5s ease-in-out;
+      }
+    }
+    .NoPRD{
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      font-size: 20px;
+      font-family: 'Russo One';
+    }
+  }
+}
+

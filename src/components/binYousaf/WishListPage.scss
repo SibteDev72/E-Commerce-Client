@@ -1,0 +1,31 @@
+.wishListProducts{
+  text-align: center;
+  color: black;
+  font-family: 'Russo One';
+  font-size: 20px;
+  margin-top: 24vh;
+  h3{
+    font-family: 'Russo One';
+    margin-bottom: 5%;
+  }
+    .Name{
+      color: black;
+      font-family: 'Russo One';
+      font-size: 20px;
+      margin-top: 2.5%;
+      margin-bottom: -1%;
+    }
+    .Prc{
+      color: rgb(246, 147, 34);
+      font-size: 16px;
+    }
+    .Artical{
+      width: 280px;
+      height: auto;
+      cursor: pointer;
+    }
+    .Artical:hover{
+      transform: scale(1.020);
+      transition: transform 0.5s ease-in-out;
+    }
+}

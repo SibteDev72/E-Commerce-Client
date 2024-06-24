@@ -1,0 +1,281 @@
+@media screen and (min-width: 768px) {
+    .CUS-Div{
+        width: 100vw;
+        margin-top: 40vh;
+        height: max-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        .MessageDetails{
+            display: flex;
+            flex-direction: column;
+            width: 60vw;
+            border-top: 2.5px solid rgb(252, 134, 1);
+            .MDHead{
+                margin-top: -6%;
+                font-size: 25px;
+                margin-left: 2%;
+                font-family: 'Russo One'; 
+           }
+           .Forms{
+                margin-top: 10%;
+                .formgroup{
+                    margin-bottom: 3%;
+                    width: 55vw;
+                    margin-left: 2%;
+                    color: black;
+                    font-size: 20px;
+                        .field{
+                            border: 1px solid rgb(187, 187, 187);
+                            border-radius: 0px;
+                            height: 50px;
+                        }
+                        .Messagefield{
+                            border: 1px solid rgb(187, 187, 187);
+                            border-radius: 0px;
+                            height: 150px;
+                        }
+                }
+            }
+            .SMSG{
+                width: 18vw;
+                height: 60px;
+                margin: 15px 2%;
+                color: white;
+                padding: 5px 30px;
+                background-color:  rgb(50, 50, 50);;
+                border: none;
+                cursor: pointer;
+            }
+            .SMSG:hover{
+                background-color: rgb(246, 147, 34);
+                transition: background-color 0.3s ease-in-out;
+            }
+           
+        }
+        .OfficeDetails{
+            display: flex;
+            flex-direction: column;
+            width: 35vw;
+            border-top: 2.5px solid rgb(252, 134, 1);
+            .ODHead{
+                margin-top: -9%;
+                font-size: 25px;
+                margin-left: 2%;
+                font-family: 'Russo One'; 
+            }
+           .Location{
+                display: flex;
+                margin-top: 5%;
+                flex-direction: row;
+                .Icon{
+                    height: 25px;
+                    width: auto;
+                }
+                .LHead{
+                    margin-left: 2%;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+           }
+           .AddressText{
+            font-size: 15px;
+            color: rgb(100, 100, 100);
+            padding-bottom: 27%;
+            border-bottom: 1px solid rgb(171, 171, 171);
+            width: 34vw;
+           }
+           .Ediv{
+            display: flex;
+            margin-top: 5%;
+            flex-direction: row;
+                .Icon{
+                    height: 25px;
+                    width: auto;
+                }
+                .EHead{
+                    margin-left: 3%;
+                    font-size: 16px;
+                }
+                .EHead:hover{
+                    cursor: pointer;
+                    color: rgb(246, 147, 34);
+                    transition: color 0.20s ease-in-out;
+                }
+            }
+            .PNdiv{
+                display: flex;
+                margin-top: 2%;
+                flex-direction: row;
+                    .Icon{
+                        height: 25px;
+                        width: auto;
+                    }
+                    .PHead{
+                        margin-left: 3%;
+                        font-size: 16px;
+                    }
+                    .PHead:hover{
+                        cursor: pointer;
+                        color: rgb(246, 147, 34);
+                        transition: color 0.20s ease-in-out;
+                    }
+            }
+            .Social_Ics{
+                display: flex;
+                flex-direction: row;
+                margin-left: 3%;
+                margin-top: 2%;
+                .icons{
+                    font-size: 30px;
+                    margin: 0px 2%;
+                    cursor: pointer;
+                }
+                .icons:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .CUS-Div{
+        margin-top: 30vh;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        .MessageDetails{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-top: 2.5px solid rgb(252, 134, 1);
+            .MDHead{
+                font-size: 25px;
+                margin-left: 2%;
+                font-family: 'Russo One'; 
+                margin-top: -5%;
+           }
+           .Forms{
+                margin-top: 4%;
+                .formgroup{
+                    margin-bottom: 3%;
+                    width: 90vw;
+                    margin-left: 2%;
+                    color: black;
+                    font-size: 20px;
+                        .field{
+                            border: 1px solid rgb(187, 187, 187);
+                            border-radius: 0px;
+                            height: 50px;
+                        }
+                        .Messagefield{
+                            border: 1px solid rgb(187, 187, 187);
+                            border-radius: 0px;
+                            height: 150px;
+                        }
+                }
+            }
+            .SMSG{
+                width: 28vw;
+                height: 60px;
+                margin: 10px 2%;
+                color: white;
+                padding: 5px 30px;
+                background-color:  rgb(50, 50, 50);;
+                border: none;
+                cursor: pointer;
+            }
+            .SMSG:hover{
+                background-color: rgb(246, 147, 34);
+                transition: background-color 0.3s ease-in-out;
+            }
+           
+        }
+        .OfficeDetails{
+            margin-top: 10%;
+            display: flex;
+            flex-direction: column;
+            border-top: 2.5px solid rgb(252, 134, 1);
+            .ODHead{
+                margin-top: -5%;
+                font-size: 25px;
+                text-align: center;
+                font-family: 'Russo One'; 
+            }
+           .Location{
+                margin-left: 5%;
+                display: flex;
+                margin-top: 5%;
+                flex-direction: row;
+                .Icon{
+                    height: 25px;
+                    width: auto;
+                }
+                .LHead{
+                    margin-left: 2%;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+           }
+           .AddressText{
+            margin-left: 5%;
+            font-size: 15px;
+           }
+           .Ediv{
+            display: flex;
+            margin-top: 2%;
+            margin-left: 5%;
+            flex-direction: row;
+                .Icon{
+                    height: 25px;
+                    width: auto;
+                }
+                .EHead{
+                    margin-left: 3%;
+                    font-size: 16px;
+                }
+                .EHead:hover{
+                    cursor: pointer;
+                    color: rgb(246, 147, 34);
+                    transition: color 0.20s ease-in-out;
+                }
+            }
+            .PNdiv{
+                display: flex;
+                margin-top: 2%;
+                margin-left: 5%;
+                flex-direction: row;
+                    .Icon{
+                        height: 25px;
+                        width: auto;
+                    }
+                    .PHead{
+                        margin-left: 3%;
+                        font-size: 16px;
+                    }
+                    .PHead:hover{
+                        cursor: pointer;
+                        color: rgb(246, 147, 34);
+                        transition: color 0.20s ease-in-out;
+                    }
+            }
+            .Social_Ics{
+                display: flex;
+                flex-direction: row;
+                margin-left: 5%;
+                margin-top: 1%;
+                .icons{
+                    font-size: 30px;
+                    margin: 10px 1%;
+                    cursor: pointer;
+                }
+                .icons:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.Dasboard-Div{
+    display: flex;
+    flex-direction: row;
+    .header-Content-Div{
+        display: flex;
+        flex-direction: column;
+        .ContentDiv{
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            margin-top: 1vh;
+            width: 78vw;
+            height: 88vh;
+            background-color: rgb(197, 197, 197);
+            box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.59);
+            -webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.59);
+            -moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.59);
+            border-radius: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .ContentDiv::-webkit-scrollbar{
+            display: none;
+        }
+    }
+
+}

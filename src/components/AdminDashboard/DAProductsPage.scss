@@ -1,0 +1,143 @@
+.PrdDiv{
+    .Wrap{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 17vw ;
+        height: max-content;
+        margin: 4% 2%;
+        background-color: rgb(197, 197, 197);
+        box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.59);
+        -webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.59);
+        -moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.59);
+        border-radius: 10px;
+        .ProductCover{
+            display: flex;
+            border-radius: 10px 10px 0px 0px;
+            width: 17vw;
+        }
+        .PrdIcons{
+            width: 17vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            .Icns{
+                margin: 5% 12px;
+                font-size: 25px;
+                cursor: pointer;
+            }
+        }
+    }   
+}
+.selectedProdDiv{
+    display: flex;
+    flex-direction: column;
+    h3{
+        margin-top: 3%;
+        color: black;
+        text-align: center;
+        font-family: 'Russo One';
+    }
+    .ADDetails1{
+        display: flex;
+        flex-direction: row;
+        margin-left: 5%;
+        margin-top: -2%;
+        .ADArtical_Images{
+            display: flex;
+            flex-direction: column;
+            #ADpic{
+                margin-top: 2%;
+                height: auto;
+                width: 20vw;
+            }
+            .ADimgsDiv{
+                width: 20vw;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 2%;
+                .ADsliderImgs{
+                    height: auto;
+                    width: 5vw;
+                    margin-left: 5px;
+                    cursor: pointer;
+                }
+            } 
+        }
+        .ADProductDetails{
+            margin-top: 2%;
+            margin-left: -20%;
+            .ADNP-R{
+                #ADName{
+                    color: black;
+                    font-family: 'Russo One';
+                    font-size: 25px;
+                }
+                #ADPrice{
+                    margin-top: 3%;
+                    color:  rgb(2, 12, 53);
+                    font-size: 18px;
+                }
+            }
+            .ADProdCat{
+                margin-top: 7%;
+                display: flex;
+                flex-direction: row;
+                font-size: 18px;
+                .ADheading{
+                    font-family: 'Russo One';
+                    color: rgb(82, 81, 81);
+                }
+                .ADvalue{
+                    margin-left: 1%;
+                    color: rgb(2, 12, 53);
+                }
+            }
+        }
+        h4{
+            margin-top: 5%;
+            margin-bottom: 3%;
+            color: black;
+            font-family: 'Russo One';
+        }
+    }
+    .PrdSizes{
+        margin-left: 5%;
+        h4{
+            margin-top: 5%;
+            margin-bottom: 3%;
+            color: black;
+            font-family: 'Russo One';
+        }
+        .Sizes{
+            display: flex;
+            p{
+                font-size: 18px;
+                margin-right: 5px;
+            }
+        }
+    }
+    .WrapBtn{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        button{
+            margin: 20px 0px;
+            width: 150px;
+            padding: 0% 5px;
+            height: 50px;
+            color: white;
+            background-color: rgb(2, 12, 53);  
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color: rgb(121, 121, 183);
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer;
+        }
+    }
+}

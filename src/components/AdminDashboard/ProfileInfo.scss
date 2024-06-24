@@ -1,0 +1,27 @@
+h3{
+    font-family: 'Russo One';
+    text-align: center;
+    margin-top: 5%;
+}
+.ProfileInfoDiv{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    margin-left: 3%;
+    button{
+        margin-top: 5%;
+        width: 130px;
+        padding: 0% 5px;
+        height: 50px;
+        color: white;
+        background-color: rgb(2, 12, 53);  
+        border: none;
+        border-radius: 5px;
+        align-self: center;
+    }
+    button:hover{
+        background-color: rgb(121, 121, 183);
+        transition: background-color 0.2s ease-in-out;
+        cursor: pointer;
+    }
+}

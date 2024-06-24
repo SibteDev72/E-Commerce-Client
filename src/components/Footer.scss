@@ -1,0 +1,270 @@
+@media screen and (min-width: 768px) {
+    .footer-Container{
+        margin-top: 2%;
+        display: flex;
+        flex-direction: column;
+        height: 46vh;
+        color: white;
+        .footer-Details{
+            height: 34vh;
+            background-color: rgb(43, 43, 43);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-left: 5vw;
+            .Detial-1{  
+                p{
+                    font-family: 'Russo One';
+                    font-size: 18px;
+                }
+                .D1-Div{
+                    border-top: 1px solid rgb(134, 134, 134);
+                    padding-top: 12%;
+                    display: flex;
+                    flex-direction: row;
+                    width: 32vw;
+                    .Emailform{
+                        background-color: rgb(66, 66, 66);
+                        color: white;
+                        border-radius: 0%;
+                        width: 25vw;
+                        height: 50px;
+                        border: none;
+                    }
+                    .SignUp-BTN{
+                        background-color: rgb(27, 27, 27);
+                        color: white;
+                        font-size: 13px;
+                        width: 80px;
+                        border: none;
+                        padding: 5px 10px;
+                        cursor: pointer;
+                    }
+                    .SignUp-BTN:hover{
+                        color: rgb(255, 173, 78);
+                        background-color: black;
+                        transition: background-color 0.3s ease-in-out;
+                        transition: color 0.3s ease-in-out;
+                    }
+                }
+            }
+            .Detial-2{  
+                .heading2{
+                    font-family: 'Russo One';
+                    font-size: 18px;
+                    margin-left: 10%;
+                }
+                .D2-Div{
+                    border-top: 1px solid rgb(134, 134, 134);
+                    padding-top: 7.5%;
+                    display: flex;
+                    margin-left: 10%;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                #opt{
+                    padding-right: 10%;
+                    padding-left:  2%;
+                    font-size: 15px;
+                    margin-bottom: 3%;
+                    cursor: pointer;
+                }
+                #opt:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+                #opt1{
+                    padding-right: 10%;
+                    padding-left: 12%;
+                    font-size: 15px;
+                    margin-bottom: 3%;
+                    cursor: pointer;
+                }
+                #opt1:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+            .Detial-3{    
+                .heading3{
+                    font-family: 'Russo One';
+                    font-size: 18px;
+                    margin-left: 1%;
+                }
+                .D3-Div{
+                    width: 25vw;
+                    border-top: 1px solid rgb(134, 134, 134);
+                    padding-top: 8%;
+                    display: flex;
+                    margin-left: 1%;
+                    flex-direction: column;
+                }
+                .opt3{
+                    margin-top: -2.3%;
+                    padding-right: 10%;
+                    padding-left: 1%;
+                    font-size: 15px;
+                    cursor: pointer;
+                }
+                .opt3:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+        }
+        .footer-SocialMedia{
+            height: 12vh;
+            background-color: rgb(21, 21, 21);
+            .Media-Icons{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                .icons{
+                    font-size: 32px;
+                    margin: 0px 2%;
+                    cursor: pointer;
+                }
+                .icons:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .footer-Container{
+        width: 100vw;
+        margin-top: 1%;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        .footer-Details{
+            background-color: rgb(43, 43, 43);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding-left: 6vw;
+            padding-top: 6%;
+            .Detial-1{  
+                p{
+                    font-family: 'Russo One';
+                    font-size: 20px;
+                }
+                .D1-Div{
+                    border-top: 1px solid rgb(134, 134, 134);
+                    padding-top: 3%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: 85vw;
+                    .Emailform{
+                        background-color: rgb(66, 66, 66);
+                        color: white;
+                        border-radius: 0%;
+                        width: 70vw;
+                        height: 60px;
+                        border: none;
+                    }
+                    .SignUp-BTN{
+                        background-color: rgb(27, 27, 27);
+                        color: white;
+                        font-size: 13px;
+                        width: 80px;
+                        border: none;
+                        padding: 5px 10px;
+                        cursor: pointer;
+                    }
+                    .SignUp-BTN:hover{
+                        color: rgb(255, 173, 78);
+                        background-color: black;
+                        transition: background-color 0.3s ease-in-out;
+                        transition: color 0.3s ease-in-out;
+                    }
+                }
+            }
+            .Detial-2{  
+                .heading2{
+                    font-family: 'Russo One';
+                    font-size: 18px;
+                    margin-top: 6%;
+                }
+                .D2-Div{
+                    width: 85vw;
+                    border-top: 1px solid rgb(134, 134, 134);
+                    padding-top: 3%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                #opt{
+                    padding-right: 10%;
+                    padding-left:  2%;
+                    font-size: 15px;
+                    margin-bottom: 3%;
+                    cursor: pointer;
+                }
+                #opt:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+                #opt1{
+                    padding-right: 10%;
+                    padding-left: 2%;
+                    font-size: 15px;
+                    margin-bottom: 3%;
+                    cursor: pointer;
+                }
+                #opt1:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+            .Detial-3{    
+                .heading3{
+                    margin-top: 3%;
+                    font-family: 'Russo One';
+                    font-size: 18px;
+                }
+                .D3-Div{
+                    width: 85vw;
+                    border-top: 1px solid rgb(134, 134, 134);
+                    padding-top: 3%;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .opt3{
+                    padding-right: 10%;
+                    padding-left: 2%;
+                    font-size: 15px;
+                    cursor: pointer;
+                }
+                .opt3:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+        }
+        .footer-SocialMedia{
+            background-color: rgb(21, 21, 21);
+            height: 15vh;
+            .Media-Icons{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                .icons{
+                    font-size: 32px;
+                    margin: 0px 2%;
+                    cursor: pointer;
+                }
+                .icons:hover{
+                    color: rgb(255, 173, 78);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+}

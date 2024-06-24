@@ -1,0 +1,40 @@
+*{
+    font-family: 'Roboto', sans-serif; 
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+
+body{
+    width: 100%;
+    overflow-x: hidden;
+}
+  
+@keyframes animateDown{
+    0% {
+        opacity: 1;
+        transform: translateY(-100%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+}
+
+@keyframes rotate-image {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate-image180 {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
