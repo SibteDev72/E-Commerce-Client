@@ -73,8 +73,8 @@ function DAProductsPage() {
     <>
       <Row style = {{display: viewStatus === true && 'none'}} className='PrdDiv'>
           {
-            Product.map(Info => (
-              <Col onClick={() => Clicked(Info._id)} sm={3} md={3} lg={3} xl={3} xxl={3}>
+            Product.map((Info, index) => (
+              <Col key={index} sm={3} md={3} lg={3} xl={3} xxl={3}>
                 <div className='Wrap'>
                   <img className="ProductCover" src = {Info.ProductImageUrlArray[0]} alt="InserImage"  /> 
                   <div className='PrdIcons'>

@@ -6,12 +6,11 @@ import { useStore } from "../../store/cart-store";
 
 function CartPage() {
     
-    const { cart, cartItemsTotal, updateCartItem, deleteCartItem, clearCart } = useStore((state) => ({
+    const { cart, cartItemsTotal, updateCartItem, deleteCartItem} = useStore((state) => ({
         cart: state.cart,
         cartItemsTotal: state.cartItemsTotal,
         updateCartItem: state.updateCartItem,
         deleteCartItem: state.deleteCartItem,
-        clearCart: state.clearCart
     }))
 
     function quantityHandler(itemIndex, type){
@@ -67,8 +66,8 @@ function CartPage() {
             </table>
             <div className='Mobile-Cart'>
                 {
-                    cart.map(ProductData => (
-                        <div className='Mobile-Data-Div'>
+                    cart.map((ProductData, index) => (
+                        <div key={index} className='Mobile-Data-Div'>
                             <img className='cartImageM' src = {ProductData.ProductImageURL} />
                             <div className='NS-DIVM'>
                                 <p>{ProductData.Artical}</p>
@@ -77,9 +76,9 @@ function CartPage() {
                                 <p>Size: {ProductData.ProductSize}</p>
                             </div>
                             <div className='ProductQuanM'>
-                                <p className='Dec_BTNM' onClick={() => decrement(ProductData.Artical, ProductData._id)}>⎯</p>
+                                <p className='Dec_BTNM' onClick={() => quantityHandler(index, 'decrement')}>⎯</p>
                                 <p>{ProductData.ProductQuantity}</p>
-                                <p className='Inc_BTNM' onClick={() => increment(ProductData.Artical, ProductData._id)}>+</p>
+                                <p className='Inc_BTNM' onClick={() => quantityHandler(index, 'increment')}>+</p>
                             </div>
                             <CloseIcon className='deleteBTNM' onClick = {() => deleteCartItem(ProductData._id, ProductData.ProductQuantity)}/>
                         </div>
