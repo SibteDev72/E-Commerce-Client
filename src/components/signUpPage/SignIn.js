@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
-import axios from 'axios';
 import './SignUp.scss'
-import { baseURL } from '../../baseUrl';
+import { userSignIn } from '../../APIs/UserAPIs';
 
 function SignIn() {
 
@@ -19,26 +18,18 @@ function SignIn() {
         setuserData(newUserData);
     }
     
-    const submitHandler  = (e) => {
+    async function submitHandler(e){
         e.preventDefault();
-        axios.post(`${baseURL}/User/signIn`, userData).then((result) => {
-            localStorage.setItem('Token', result.data.token);
-            localStorage.setItem('UserName', result.data.userName);
-            localStorage.setItem('UserEmail', result.data.UserEmail);
-            window.location.assign('/AdminDashboardRoute');
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+        const response = await userSignIn(userData);
+        localStorage.setItem('Token', response.data.token);
+        localStorage.setItem('UserName', response.data.userName);
+        localStorage.setItem('UserEmail', response.data.UserEmail);
+        window.location.assign('/AdminDashboardRoute');
     }
-
-    function Registerclicked(){
-        window.location.assign('/')
-    }
-
+    
   return (
     <div className='signUpDiv'>
-        <button onClick={() => Registerclicked()} className='Top_Button' >Register</button>
+        <button onClick={() => window.location.assign('/')} className='Top_Button' >Register</button>
         <Form className='SignUpForm' onSubmit={(e) => submitHandler(e)}>
             <Form.Group className='formgroup'>
                 <Form.Label>Email</Form.Label>

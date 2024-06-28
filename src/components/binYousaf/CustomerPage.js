@@ -1,16 +1,16 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
+import Confirmation from './Confirmation';
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import './CustomerPage.scss'
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { getProduct, updateProduct } from '../../APIs/ProductAPIs';
+import { addOrder } from '../../APIs/OrderAPIs';
 import { useStore } from "../../store/cart-store";
 import { useStoreWeeklySale } from '../../store/weeklySale-store';
-import { baseURL } from '../../baseUrl';
 
 function CustomerPage() {
-    const userToken = localStorage.getItem('Token');
     const[FirstName, setFirstName] = useState({});
     const[LastName, setLastName] = useState({});
     const[State, setState] = useState({});
@@ -24,6 +24,7 @@ function CustomerPage() {
     const[CheckboxStatus, setCheckboxStatus] = useState(false);
     const[cities1, setCities1] = useState([]);
     const[cities2, setCities2] = useState([]);
+    const[confirmStatus, setConfirmStatus] = useState(false);
 
     const[CustomerData, setCustomerData] = useState(
         {
@@ -52,14 +53,12 @@ function CustomerPage() {
     }))
 
     useEffect(() => {
-        const ProductAPI = `${baseURL}/ProductInfo/getProduct`;
-        axios.get(ProductAPI, { headers: {"x-access-token" : userToken}}).then((result) => {
-            setProducts(result.data);
-        })
-        .catch((error) => {
-            console.log("Error Occurred !!!" + error);
-        })
-    },[Products])
+        const fetchData = async () => {
+            const response = await getProduct()
+            setProducts(response.data);
+        }
+        fetchData();
+    },[])
 
     function FirstNameHandler(event){
         const { name, value } = event.target;
@@ -134,7 +133,39 @@ function CustomerPage() {
         setCheckboxStatus(isChecked);
     }
 
-    function submitForm(){
+    async function submitForm(){
+        cart.map(cartData => {
+            Products.filter(Productdata => Productdata.ProductName === cartData.Artical).map(async (data) => {
+                if(cartData.ProductSize === 'S'){
+                    const obj = {
+                        ProductStockS: data.ProductStockS - cartData.ProductQuantity 
+                    }
+                    const response = await updateProduct(data._id, obj);
+                    console.log(response.data); 
+                }
+                if(cartData.ProductSize === 'M'){
+                    const obj = {
+                        ProductStockM: data.ProductStockM - cartData.ProductQuantity 
+                    }
+                    const response = await updateProduct(data._id, obj);
+                    console.log(response.data); 
+                }
+                if(cartData.ProductSize === 'L'){
+                    const obj = {
+                        ProductStockL: data.ProductStockL - cartData.ProductQuantity 
+                    }
+                    const response = await updateProduct(data._id, obj);
+                    console.log(response.data);
+                }
+                if(cartData.ProductSize === 'XL'){
+                    const obj = {
+                        ProductStockXL: data.ProductStockXL - cartData.ProductQuantity 
+                    }
+                    const response = await updateProduct(data._id, obj);
+                    console.log(response.data);
+                }
+            }) 
+        })
         const currentDate = new Date().toLocaleDateString('en-US', {
             weekday: 'long',
             year: 'numeric',
@@ -160,68 +191,17 @@ function CustomerPage() {
         const newContactNumber = Object.values(ContactNumber);
         CustomerData.ContactNumber = [...newContactNumber]
         CustomerData.ShippingStatus = CheckboxStatus;
-            
-        const api1 = `${baseURL}/CustomerInfo/addCustomer`
-            axios.post(api1, CustomerData, { headers: {"x-access-token" : userToken}}).then((results) => {
-                console.log(results.data)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            cart.map(cartData => {
-                Products.filter(Productdata => Productdata.ProductName === cartData.Artical).map(data => {
-                    if(cartData.ProductSize === 'S'){
-                        const obj = {
-                            ProductStockS: data.ProductStockS - cartData.ProductQuantity 
-                        }
-                        const updateAPI = `${baseURL}/ProductInfo/updateProduct/`; 
-                        axios.put(updateAPI + data._id, obj, { headers: {"x-access-token" : userToken}}).then(() => {
-                        })
-                        .catch((error) => {
-                        console.log(error);
-                        }) 
-                    }
-                    if(cartData.ProductSize === 'M'){
-                        const obj = {
-                            ProductStockM: data.ProductStockM - cartData.ProductQuantity 
-                        }
-                        const updateAPI = `${baseURL}/ProductInfo/updateProduct/`; 
-                        axios.put(updateAPI + data._id, obj, { headers: {"x-access-token" : userToken}}).then(() => {
-                        })
-                        .catch((error) => {
-                        console.log(error);
-                        }) 
-                    }
-                    if(cartData.ProductSize === 'L'){
-                        const obj = {
-                            ProductStockL: data.ProductStockL - cartData.ProductQuantity 
-                        }
-                        const updateAPI = `${baseURL}/ProductInfo/updateProduct/`; 
-                        axios.put(updateAPI + data._id, obj, { headers: {"x-access-token" : userToken}}).then(() => {
-                        })
-                        .catch((error) => {
-                        console.log(error);
-                        }) 
-                    }
-                    if(cartData.ProductSize === 'XL'){
-                        const obj = {
-                            ProductStockXL: data.ProductStockXL - cartData.ProductQuantity 
-                        }
-                        const updateAPI = `${baseURL}/ProductInfo/updateProduct/`; 
-                        axios.put(updateAPI + data._id, obj, { headers: {"x-access-token" : userToken}}).then(() => {
-                        })
-                        .catch((error) => {
-                        console.log(error);
-                        }) 
-                    }
-                }) 
-            })
-            const date = new Date();
-            updateSale(date.toLocaleDateString('en-US', { weekday: 'long' }), cartItemsTotal);
-            updateTotalSales(cartItemsTotal)
-            clearCart()
-            localStorage.setItem('ProductCategory', null);
-            window.location.assign('/ConfirmationPage');
+        
+        const response = await addOrder(CustomerData);
+        console.log(response.data);
+        
+        const date = new Date();
+        updateSale(date.toLocaleDateString('en-US', { weekday: 'long' }), cartItemsTotal);
+        updateTotalSales(cartItemsTotal) 
+        clearCart()
+        localStorage.setItem('ProductCategory', null);
+        setConfirmStatus(true)
+
     }
 
   return (
@@ -535,6 +515,7 @@ function CustomerPage() {
             </table>
             <button onClick={() => submitForm()} className='placeOrder'>Place Order</button>
         </div>
+        {confirmStatus && <Confirmation /> }
     </div>
   )
 }

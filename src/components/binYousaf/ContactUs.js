@@ -4,12 +4,10 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import axios from 'axios'
-import { baseURL } from '../../baseUrl';
+import { addMessage } from '../../APIs/MessageAPIs';
 
 function ContactUs() {
-
-    const userToken = localStorage.getItem('Token');
+    
     const[MessageData, setMessageData] = useState(
         {
             MessageDate: '',
@@ -26,7 +24,7 @@ function ContactUs() {
         setMessageData(newMessageData);
     }
 
-    function submitForm(){
+    async function submitForm(){
         const currentDate = new Date().toLocaleDateString('en-US', {
             weekday: 'long',
             year: 'numeric',
@@ -34,13 +32,10 @@ function ContactUs() {
             day: 'numeric'
         });
         MessageData.MessageDate = currentDate;
-        const api1 = `${baseURL}/MessageInfo/addMessage`
-            axios.post(api1, MessageData, { headers: {"x-access-token" : userToken}}).then((results) => {
-                window.location.assign('/HomePage');
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        const response = await addMessage(MessageData)
+        console.log(response.data);
+        alert('Message Sent')
+        window.location.assign('/HomePage')
     }
     
   return (

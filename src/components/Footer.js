@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 
 function Footer() {
     function clicked(){
-        localStorage.setItem("ProductCategory", 'Boski');
+        localStorage.setItem("ProductCategory", 'Kurta');
         window.location.assign('/ProductPage');
     }
   return (

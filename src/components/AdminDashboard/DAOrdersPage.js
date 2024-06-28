@@ -1,45 +1,44 @@
+import { useState, useEffect } from 'react';
 import React from 'react'
 import './DAOrdersPage.scss'
 import CloseIcon from '@mui/icons-material/Close';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { baseURL } from '../../baseUrl';
-
+import { getOrder } from '../../APIs/OrderAPIs';
+import { deleteOrder } from '../../APIs/OrderAPIs';
 
 function DAOrdersPage() {
 
-  const userToken = localStorage.getItem('Token');
   const[OrdersList, setOrdersList] = useState([]);
+  const[loader, setLoader] = useState(true)
 
   useEffect(() => {
-    const api1 = `${baseURL}/CustomerInfo/getCustomer`;
-    axios.get(api1, { headers: {"x-access-token" : userToken}}).then((results) => {
-      setOrdersList(results.data.reverse());
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+    const fetchData = async () => {
+      const response = await getOrder()
+      setOrdersList(response.data.reverse());
+      setLoader(false)
+    }
+    fetchData();
   }, [])
 
-  function deleteOrder(id) {
-    const api = `${baseURL}/CustomerInfo/deleteCustomer/`;
-    axios.delete( api + id, { headers: {"x-access-token" : userToken}} ).then(() => {
-        window.location.assign('/AdminDashboardRoute')   
-    })
-    .catch((error) => {
-        console.log("Error Occurred !!!" + error);
-    })
+  async function deleteHandler(id) {
+    const response = await deleteOrder(id)
+    console.log(response.data);
+    window.location.assign('/AdminDashboardRoute')   
   }
 
   return (
-    <div className='OrdersAdminDiv'>
+    <>
+    <div className='loader_div' style={{ display: !loader && 'none' }}>
+        <p className='loader_text'>Orders Loading</p>
+        <div className="loader"></div>
+    </div>
+    <div className='OrdersAdminDiv' style={{ display: loader && 'none' }}>
       <h3>Orders List</h3>   
       <div className='OrderData'>
         {
-          OrdersList.map(OrderData => (
+          OrdersList.map((OrderData, index) => (
           <>
           <p className='OrdNo'>Order# {OrderData.OrderNo}</p>
-          <div className='ADCartData'>
+          <div key={index} className='ADCartData'>
             {
               OrderData.CartInfo.map(CartData => (
                 <div className='CartDataDiv'>
@@ -73,13 +72,14 @@ function DAOrdersPage() {
               <b>, {OrderData.PostalNumber[1]}</b></p>
               <p className='SM'>0{OrderData.ContactNumber[1]}</p>
             </div>
-            <button  onClick={() => deleteOrder(OrderData._id)} className='OrdDelBtn'> <CloseIcon /> Remove Order </button>
+            <button  onClick={() => deleteHandler(OrderData._id)} className='OrdDelBtn'> <CloseIcon /> Remove Order </button>
           </div>
           </>
           ))
         }
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './DAProductsPage.scss'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,7 +7,9 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { baseURL } from '../../baseUrl';
+import { getProduct } from '../../APIs/ProductAPIs';
+import { getProductbyID } from '../../APIs/ProductAPIs';
+import { deleteProduct } from '../../APIs/ProductAPIs';
 
 function DAProductsPage() {
 
@@ -18,32 +19,24 @@ function DAProductsPage() {
     const[ProductImageSource, setProductImageSource] = useState([]);
     const[viewStatus, setViewStatus] = useState(false);
     const[imgSrc, setimgSrc] = useState();
-
+    
     const navigate = useNavigate();
-    const userToken = localStorage.getItem('Token');
     
     useEffect(() => {
-        const api1 = `${baseURL}/ProductInfo/getProduct`;
-        axios.get(api1, { headers: {"x-access-token" : userToken}}).then((result) => {
-            setProduct(result.data)
-        })
-        .catch((error) => {
-            console.log("Error Occurred !!!" + error);
-        })
+      const fetchData = async () => {
+        const response = await getProduct()
+        setProduct(response.data)
+      }
+      fetchData();
     }, [])
 
-    function ViewProduct(id) {
+    async function ViewProduct(id) {
       setViewStatus(true);
-      const DataApi = `${baseURL}/ProductInfo/getProductbyID/`
-        axios.get(DataApi + id, { headers: {"x-access-token" : userToken}}).then(result => {
-           setProductDetails(result.data);
-           setProductImageSource(result.data.ProductImageUrlArray);
-           setProductSizes(result.data.ProductSizes);
-           setimgSrc(result.data.ProductImageUrlArray[0]);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+      const response = await getProductbyID(id);
+      setProductDetails(response.data);
+      setProductImageSource(response.data.ProductImageUrlArray);
+      setProductSizes(response.data.ProductSizes);
+      setimgSrc(response.data.ProductImageUrlArray[0]);
     }
 
     var imgCount = 0;
@@ -51,22 +44,10 @@ function DAProductsPage() {
         imgCount+=1
     })
 
-    function imgHandler(Src){
-      setimgSrc(Src)
-  }
-
-    function deleteProduct(id) {
-        const api2 = `${baseURL}/ProductInfo/deleteProduct/`;
-        axios.delete( api2 + id, { headers: {"x-access-token" : userToken}} ).then(() => {
-            window.location.assign('/AdminDashboardRoute')   
-        })
-        .catch((error) => {
-            console.log("Error Occurred !!!" + error);
-        })
-    }
-
-    function editProduct(id) {
-        navigate('/AdminDashboardRoute/DAEditProduct', {state : {ProductID : id}});   
+    async function deleteHandler(id) {
+      const response = await deleteProduct(id)
+      console.log(response.data);
+      window.location.assign('/AdminDashboardRoute')   
     }
 
   return (
@@ -79,8 +60,9 @@ function DAProductsPage() {
                   <img className="ProductCover" src = {Info.ProductImageUrlArray[0]} alt="InserImage"  /> 
                   <div className='PrdIcons'>
                     <VisibilityIcon onClick={() => ViewProduct(Info._id)} className='Icns'/>
-                    <BorderColorIcon onClick={() => editProduct(Info._id)} className='Icns' />
-                    <DeleteIcon onClick={() => deleteProduct(Info._id)} className='Icns' />
+                    <BorderColorIcon 
+                    onClick={() => navigate('/AdminDashboardRoute/DAEditProduct', {state : {ProductID : Info._id}})} className='Icns' />
+                    <DeleteIcon onClick={() => deleteHandler(Info._id)} className='Icns' />
                   </div>
                 </div>
               </Col>
@@ -97,7 +79,7 @@ function DAProductsPage() {
                   <div className='ADimgsDiv' style = {{display: imgCount === 3 && 'none'}}>
                       {
                           ProductImageSource.map(imgSrc => (
-                              <img onClick={() => imgHandler(imgSrc)} className='ADsliderImgs' src={imgSrc} />
+                              <img onClick={() => setimgSrc(imgSrc)} className='ADsliderImgs' src={imgSrc} />
                           ))
                       }
                   </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './HomePage.scss'
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
@@ -6,16 +6,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import "./Categories.scss";
-import { useState } from 'react';
-import axios from 'axios';
+import { getCategory } from '../../APIs/CategoryAPIs';
 import { useStore } from '../../store/cart-store';
 import { useStoreW } from '../../store/wishlist-store';
 import { useStoreP } from '../../store/pop-ups-store';
-import { baseURL } from '../../baseUrl';
 
 function HomePage() {
 
-  const token = localStorage.getItem('Token');
   const[articals, setArticals] = useState([]);
 
   const { openCart, openMenu } = useStoreP((state) => ({
@@ -26,14 +23,11 @@ function HomePage() {
   const wishlistNumber = useStoreW((state) => state.wishlistNumber)
   
   useEffect(() => {
-    const api1 = `${baseURL}/CategoryInfo/getCategory`;
-    axios.get(api1, { headers: {"x-access-token" : token}}).then((result) => {
-        setArticals(result.data)
-    })
-    .catch((error) => {
-        console.log("Error Occurred !!!" + error);
-    })
-
+    const fetchData = async () => {
+      const response = await getCategory()
+      setArticals(response.data)
+    }
+    fetchData();
   }, [])
 
   function Clicked(category){

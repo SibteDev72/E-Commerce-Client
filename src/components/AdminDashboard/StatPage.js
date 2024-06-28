@@ -6,13 +6,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import 'react-calendar/dist/Calendar.css';
 import './StatPage.scss'
-import axios from 'axios';
-import { baseURL } from '../../baseUrl';
+import { getMessage } from '../../APIs/MessageAPIs';
+import { getMessagebyID } from '../../APIs/MessageAPIs';
+import { deleteMessage } from '../../APIs/MessageAPIs';
+import { getOrder } from '../../APIs/OrderAPIs';
 import { useStoreWeeklySale } from '../../store/weeklySale-store';
 
 function StatPage() {
 
-  const userToken = localStorage.getItem('Token');
   const[OrdersList, setOrdersList] = useState([]);
   const[MessagesList, setMessagesList] = useState([]);
   const[selectedMsgDetails, setselectedMsgDetails] = useState([]);
@@ -66,27 +67,6 @@ function StatPage() {
       }
     }
   })
-  
-  useEffect(() => {
-    const OrderAPI = `${baseURL}/CustomerInfo/getCustomer`;
-    axios.get(OrderAPI, { headers: {"x-access-token" : userToken}}).then((results) => {
-      setOrdersList(results.data.slice(-4));
-    })
-    .catch((error) => {
-        console.log(error);
-    })
-
-    const MessageAPI = `${baseURL}/MessageInfo/getMessage`;
-    axios.get(MessageAPI, { headers: {"x-access-token" : userToken}}).then((results) => {
-      setMessagesList(results.data);
-      if(results.data.length === 0){
-        setNoMessagesStatus(true);
-      }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
-  },[OrdersList, MessagesList])
 
   useEffect(() => {
     const newData = {
@@ -108,30 +88,34 @@ function StatPage() {
     }
     setChart(newData);
   },[days])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const responseMsg = await getMessage()
+      setMessagesList(responseMsg.data);
+      if(responseMsg.data.length === 0){
+        setNoMessagesStatus(true);
+      }
+      const responseOrd = await getOrder()
+      setOrdersList(responseOrd.data.slice(-4));
+    }
+    fetchData();
+  },[])
 
   const handleDateChange = (newDate) => {
     setDate(newDate);
   };
 
-  function MessageClicked(id){
+  async function MessageClicked(id){
+    const response = await getMessagebyID(id)
+    setselectedMsgDetails(response.data)
     setMessageViewStatus(true);
-    const DataApi = `${baseURL}/MessageInfo/getMessagebyID/`
-      axios.get(DataApi + id, { headers: {"x-access-token" : userToken}}).then(result => {
-           setselectedMsgDetails(result.data)
-      })
-      .catch(error => {
-          console.log(error);
-      })
   } 
 
-  function deleteMessage(id){
-    const api = `${baseURL}/MessageInfo/deleteMessage/`;
-    axios.delete( api + id, { headers: {"x-access-token" : userToken}} ).then(() => {
-        window.location.assign('/AdminDashboardRoute')   
-    })
-    .catch((error) => {
-        console.log("Error Occurred !!!" + error);
-    })
+  async function deleteHandler(id){
+    const response = await deleteMessage(id)
+    console.log(response.data);
+    window.location.assign('/AdminDashboardRoute')   
   }
 
   return (
@@ -198,7 +182,7 @@ function StatPage() {
         <p className='MsgCD'>{selectedMsgDetails.Email}</p>
         <p className='MsgCD'>0{selectedMsgDetails.PHNum}</p>
         <div className='MsgBTN-Div'>
-            <button onClick={() =>  deleteMessage(selectedMsgDetails._id)} className='MsgBtns'> <DeleteIcon /> Delete Message </button>
+            <button onClick={() =>  deleteHandler(selectedMsgDetails._id)} className='MsgBtns'> <DeleteIcon /> Delete Message </button>
             <button onClick={() =>  setMessageViewStatus(false)} className='MsgBtns'><ArrowBackIosIcon /> Back</button>
         </div>
       </div>

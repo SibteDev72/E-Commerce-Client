@@ -13,7 +13,6 @@ import CartPage from './components/binYousaf/CartPage';
 import WishListPage from './components/binYousaf/WishListPage';
 import CustomerPage from './components/binYousaf/CustomerPage';
 import Footer from './components/Footer';
-import Confirmation from './components/binYousaf/Confirmation';
 import ContactUs from './components/binYousaf/ContactUs';
 import DashboardRoutes from './components/AdminDashboard/DashboardRoutes';
 import StatPage from './components/AdminDashboard/StatPage';
@@ -52,7 +51,6 @@ const App = () => {
                 <Route path='CartPage' element = {<CartPage />} />
                 <Route path='WishListPage' element = {<WishListPage />} />
                 <Route path='CustomerPage' element = {<CustomerPage />} />
-                <Route path='ConfirmationPage' element = {<Confirmation />} />
                 <Route path='ContactUSPage' element = {<ContactUs />} />
               </Routes>
 

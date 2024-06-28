@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
-import axios from 'axios';
 import './SignUp.scss'
-import { baseURL } from '../../baseUrl';
+import { userSignUp } from '../../APIs/UserAPIs';
 
 function SignUp() {
 
@@ -20,24 +19,17 @@ function SignUp() {
         setuserData(newUserData);
     }
 
-    const submitHandler  = (e) => {
+    async function submitHandler(e){
         e.preventDefault();
-        axios.post(`${baseURL}/User/signUp`, userData).then((result) => {
-            console.log(result);
-            window.location.assign('/SignIn');
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+        const response = await userSignUp(userData)
+        console.log(response.data);
+        alert('User Created')
+        window.location.assign('/SignIn');
     }
     
-    function signInclicked(){
-        window.location.assign('/SignIn')
-    }
-
   return (
     <div className='signUpDiv'>
-        <button onClick={() => signInclicked()} className='Top_Button' >Sign In</button>
+        <button onClick={() => window.location.assign('/SignIn')} className='Top_Button' >Sign In</button>
         <Form className='SignUpForm' onSubmit={(e) => submitHandler(e)}>
             <Form.Group className='formgroup'>
                 <Form.Label>User Name</Form.Label>

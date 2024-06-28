@@ -1,14 +1,12 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 import './DashboardHeader.scss'
 import MessageIcon from '@mui/icons-material/Message';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { baseURL } from '../../baseUrl';
+import { getMessage } from '../../APIs/MessageAPIs';
 
 function DashboardHeader() {
 
-  const userToken = localStorage.getItem('Token');
   const[messageNumber, setMessageNumber] = useState(0);
   const[ArrowDownStatus, setArrowDownStatus] = useState(false);
 
@@ -20,14 +18,11 @@ function DashboardHeader() {
   });
 
   useEffect(() => {
-    const MessageAPI = `${baseURL}/MessageInfo/getMessage`;
-    axios.get(MessageAPI, { headers: {"x-access-token" : userToken}}).then((results) => {
-      setMessageNumber(results.data.length);
-    })
-    .catch((error) => {
-        console.log(error);
-    })
-
+    const fetchData = async () => {
+      const response = await getMessage()
+      setMessageNumber(response.data.length);
+    }
+    fetchData();
   }, [])
 
   return (

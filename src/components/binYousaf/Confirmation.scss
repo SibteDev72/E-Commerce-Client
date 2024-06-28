@@ -1,205 +1,269 @@
 @media screen and (min-width: 768px) {
-    .order_div{
-        background-color: rgb(206, 204, 204);
+    .container-wrap{
         width: 100vw;
-        height: max-content;
+        height: 100vh;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        background-color: rgba(206, 204, 204, 0.5);
         display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        .Detial-Div{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .order_div{
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+            margin-top: 3%;
+            background-color: rgb(206, 204, 204);
+            width: 95vw;
+            height: 85vh;
+            overflow-y: auto;
             display: flex;
-            flex-direction: column;
-            width: 60vw;
-            margin-top: 10%;
-            border-top: 2.5px solid rgb(252, 134, 1);
-            .Heading{
+            flex-direction: row;
+            justify-content: space-evenly;
+            position: relative;
+            .loader_div{
+                width: 95vw;
+                height: 85vh;
                 display: flex;
                 flex-direction: row;
-                .confirm_tick{
+                justify-content: center;
+                align-items: center;
+                .loader_text{
+                    font-family: 'Russo One';
+                    margin-right: 20px;
+                    font-size: 22px;
+                }
+                .loader{
                     width: 60px;
-                    height: 60px;
-                    margin-top: -10%;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    background: 
+                    radial-gradient(farthest-side,#ffa516 94%,#0000) top/8px 8px no-repeat,
+                    conic-gradient(#0000 30%,#ffa516);
+                    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+                    animation: l13 1s infinite linear;
                 }
-                .orderNo{
-                    margin-top: -10%;
-                    padding-top: 1.7%;
-                    font-size: 25px;
-                    margin-left: 1%;
-                    font-family: 'Russo One';
-                }
-                .Ty{
-                    margin-top: 2%;
-                    font-size: 24px;
-                    text-align: center;
-                    font-family: 'Russo One';
+                @keyframes l13{ 
+                    100%{transform: rotate(1turn)}
                 }
             }
-            .OD{
+            .home_btn{
+                position: absolute;
+                right: 2%;
+                top: 2%;
+                background-color: rgb(252, 134, 1);
+                color: white;
+                padding: 5px 15px 5px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .Detial-Div{
                 display: flex;
                 flex-direction: column;
-                margin-top: 3%;
-                margin-left: 5%;
-                .HeadOD{
-                    margin-top: 2%;
-                    font-size: 24px;
-                    font-family: 'Russo One';
-                }
-                .CartDataDiv{
-                    display: flex;
-                    flex-direction: row;
-                    margin-bottom: 5%;
-                    .ProdImgs{
-                        width: 130px;
-                        height: auto;
-                        margin-bottom: 2%;
-                    }
-                    .ProdDetails{
-                        display: flex;
-                        flex-direction: column;
-                        margin-left: 2%;
-                        .Name{
-                            width: max-content;
-                            margin-top: 2.5%;
-                            font-size: 20px;
-                            font-family: 'Russo One'; 
-                        }
-                        .Price{
-                            width: max-content;
-                            color: rgb(252, 134, 1);
-                            margin-top: -8%;
-                            font-size: 18px;
-                            margin-left: 5%;
-                            font-family: 'Russo One'; 
-                        }
-                        .Quan{
-                            width: max-content;
-                            margin-top: -8%;
-                            font-size: 16px;
-                            margin-left: 5%;
-                            font-family: 'Russo One'; 
-                        }
-                        .Size{
-                            width: max-content;
-                            margin-top: -8%;
-                            font-size: 16px;
-                            margin-left: 5%;
-                            font-family: 'Russo One'; 
-                        }
-                        .Subtotal{
-                            width: max-content;
-                            margin-top: -8%;
-                            font-size: 16px;
-                            margin-left: 5%;
-                            font-family: 'Russo One'; 
-                        }
-                    }
-                }
-            }
-            .CD{
-                display: flex;
-                flex-direction: column;
-                margin-left: 5%;
-                .HeadCD{
-                    margin-top: 2%;
-                    font-size: 24px;
-                    font-family: 'Russo One';
-                }
-                .CusName{
-                    font-size: 20px;
-                    font-weight: bold;
-                    margin-bottom: 1%;
-                }
-                .Address{
-                    display: flex;
-                    flex-direction: row;
-                    font-size: 16px;
-                    margin-bottom: 1%;
-                }
-                .SM{
-                    font-size: 16px; 
-                    margin-bottom: 1%;
-                }
-                .ShC{
-                    margin-top: 2%;
-                    font-size: 24px;
-                    font-family: 'Russo One';
-                }
-            }
-        }
-        .Invoice{
-           display: flex;
-           flex-direction: column;
-           margin-top: 10%;
-           width: 35vw;
-           border-top: 2.5px solid rgb(252, 134, 1);
-           .InvioceHeading{
-                margin-top: -10%;
-                font-size: 25px;
-                margin-left: 2%;
-                font-family: 'Russo One'; 
-           }
-            .Sub-Total{
+                width: 50vw;
                 margin-top: 10%;
-                display: flex;
-                flex-direction: row;
-                position: relative;
-                .headingInv{
-                    font-size: 16px;
+                border-top: 2.5px solid rgb(252, 134, 1);
+                .Heading{
+                    display: flex;
+                    flex-direction: row;
+                    .confirm_tick{
+                        width: 50px;
+                        height: 50px;
+                        margin-top: -10%;
+                    }
+                    .orderNo{
+                        margin-top: -10%;
+                        padding-top: 1.7%;
+                        font-size: 25px;
+                        margin-left: 1%;
+                        font-family: 'Russo One';
+                    }
+                    .Ty{
+                        margin-top: 2%;
+                        font-size: 24px;
+                        text-align: center;
+                        font-family: 'Russo One';
+                    }
                 }
-                .value{
-                    font-size: 16px;
-                    position: absolute;
-                    right: 2.5%;
-                }
-            }
-            .Shipping{
-                margin-top: 7%;
-                display: flex;
-                flex-direction: row;
-                position: relative;
-                .values{
+                .OD{
                     display: flex;
                     flex-direction: column;
-                    font-size: 16px;
-                    align-items: flex-end;
-                    position: absolute;
-                    right: 2.5%;
-                    .city{
-                        margin-top: -3%;
+                    margin-top: 3%;
+                    margin-left: 5%;
+                    .HeadOD{
+                        margin-top: 2%;
+                        font-size: 24px;
                         font-family: 'Russo One';
-                        color: rgb(252, 134, 1);
-                        
+                    }
+                    .CartDataDiv{
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 5%;
+                        .ProdImgs{
+                            width: 130px;
+                            height: auto;
+                            margin-bottom: 2%;
+                        }
+                        .ProdDetails{
+                            display: flex;
+                            flex-direction: column;
+                            margin-left: 2%;
+                            .Name{
+                                width: max-content;
+                                margin-top: 2.5%;
+                                font-size: 20px;
+                                font-family: 'Russo One'; 
+                            }
+                            .Price{
+                                width: max-content;
+                                color: rgb(252, 134, 1);
+                                margin-top: -8%;
+                                font-size: 18px;
+                                margin-left: 5%;
+                                font-family: 'Russo One'; 
+                            }
+                            .Quan{
+                                width: max-content;
+                                margin-top: -8%;
+                                font-size: 16px;
+                                margin-left: 5%;
+                                font-family: 'Russo One'; 
+                            }
+                            .Size{
+                                width: max-content;
+                                margin-top: -8%;
+                                font-size: 16px;
+                                margin-left: 5%;
+                                font-family: 'Russo One'; 
+                            }
+                            .Subtotal{
+                                width: max-content;
+                                margin-top: -8%;
+                                font-size: 16px;
+                                margin-left: 5%;
+                                font-family: 'Russo One'; 
+                            }
+                        }
+                    }
+                }
+                .CD{
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 5%;
+                    .HeadCD{
+                        margin-top: 2%;
+                        font-size: 24px;
+                        font-family: 'Russo One';
+                    }
+                    .CusName{
+                        font-size: 20px;
+                        font-weight: bold;
+                        margin-bottom: 1%;
+                    }
+                    .Address{
+                        display: flex;
+                        flex-direction: row;
+                        font-size: 16px;
+                        margin-bottom: 1%;
+                    }
+                    .SM{
+                        font-size: 16px; 
+                        margin-bottom: 1%;
+                    }
+                    .ShC{
+                        margin-top: 2%;
+                        font-size: 24px;
+                        font-family: 'Russo One';
                     }
                 }
             }
-            .PM{
-                margin-top: 10%;
-                display: flex;
-                flex-direction: row;
-                position: relative;
-                .value{
-                    position: absolute;
-                    right: 2.5%;
-                    font-size: 16px;
-                }
+            .Invoice{
+            display: flex;
+            flex-direction: column;
+            margin-top: 10%;
+            width: 35vw;
+            border-top: 2.5px solid rgb(252, 134, 1);
+            .InvioceHeading{
+                    margin-top: -10%;
+                    font-size: 25px;
+                    margin-left: 2%;
+                    font-family: 'Russo One'; 
             }
-            .Total{
-                margin-top: 7%;
-                display: flex;
-                flex-direction: row;
-                position: relative;
-                .value{
-                    font-size: 18px;
-                    position: absolute;
-                    right: 2.5%;
-                    font-weight: bold;
+                .Sub-Total{
+                    margin-top: 10%;
+                    display: flex;
+                    flex-direction: row;
+                    position: relative;
+                    .headingInv{
+                        font-size: 16px;
+                    }
+                    .value{
+                        font-size: 16px;
+                        position: absolute;
+                        right: 2.5%;
+                    }
+                }
+                .Shipping{
+                    margin-top: 7%;
+                    display: flex;
+                    flex-direction: row;
+                    position: relative;
+                    .values{
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 16px;
+                        align-items: flex-end;
+                        position: absolute;
+                        right: 2.5%;
+                        .city{
+                            margin-top: -3%;
+                            font-family: 'Russo One';
+                            color: rgb(252, 134, 1);
+                            
+                        }
+                    }
+                }
+                .PM{
+                    margin-top: 10%;
+                    display: flex;
+                    flex-direction: row;
+                    position: relative;
+                    .value{
+                        position: absolute;
+                        right: 2.5%;
+                        font-size: 16px;
+                    }
+                }
+                .Total{
+                    margin-top: 7%;
+                    display: flex;
+                    flex-direction: row;
+                    position: relative;
+                    .value{
+                        font-size: 18px;
+                        position: absolute;
+                        right: 2.5%;
+                        font-weight: bold;
+                    }
                 }
             }
         }
+
+    }
+    .order_div::-webkit-scrollbar {
+        display: none;
     }
 }
 @media screen and (max-width: 767px) {
     .order_div{
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
         background-color: rgb(206, 204, 204);
         width: 100vw;
         height: max-content;
@@ -397,5 +461,8 @@
                 }
             }
         }
+    }
+    .order_div::-webkit-scrollbar {
+        display: none;
     }
 }

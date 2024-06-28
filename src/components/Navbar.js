@@ -2,15 +2,12 @@ import styled from 'styled-components';
 import React, { useState, useEffect } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import './Navbar.scss'
-import axios from 'axios';
+import { getCategory } from '../APIs/CategoryAPIs';
 import { useStore } from '../store/cart-store';
 import { useStoreW } from '../store/wishlist-store';
 import { useStoreP } from '../store/pop-ups-store';
-import { baseURL } from '../baseUrl';
 
 function Navbar() {
-
-  const token = localStorage.getItem('Token');
 
   const[articals, setArticals] = useState([]);
   const[scrolled, setscroller] = useState(false);
@@ -33,14 +30,11 @@ function Navbar() {
   const wishlistNumber = useStoreW((state) => state.wishlistNumber)
 
   useEffect(() => {
-    const CatAPI = `${baseURL}/CategoryInfo/getCategory`;
-    axios.get( CatAPI, { headers: {"x-access-token" : token}}).then((result) => {
-        setArticals(result.data)
-    })
-    .catch((error) => {
-        console.log("Error Occurred !!!" + error);
-    })
-      
+    const fetchData = async () => {
+      const response = await getCategory()
+      setArticals(response.data)
+    }
+    fetchData();
 }, [])
 
   window.onscroll = function(){

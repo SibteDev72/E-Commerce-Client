@@ -1,23 +1,25 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import './DAaddProducts.scss'
 import Form from "react-bootstrap/Form";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-import './DAaddProducts.scss'
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import axios from 'axios';
-import { baseURL } from '../../baseUrl';
-
+import { updateProduct } from '../../APIs/ProductAPIs';
+import { addCategory } from '../../APIs/CategoryAPIs';
+import { getProduct } from '../../APIs/ProductAPIs';
+import { getProductbyID } from '../../APIs/ProductAPIs';
+import { getCategory } from '../../APIs/CategoryAPIs';
+import { deleteCategory } from '../../APIs/CategoryAPIs';
 
 function DAEdtiProduct() {
 
     const location = useLocation();
     const ProductID = location.state.ProductID;
-    const userToken = localStorage.getItem('Token');
-
+    
     const[CategoryInfo, setCategoryInfo] = useState([]);
     const[checkedValues, setCheckedValues] = useState([]);
     const[Product, setProduct] = useState([]);
@@ -50,27 +52,15 @@ function DAEdtiProduct() {
     )
 
     useEffect(() => {
-            const api1 = `${baseURL}/ProductInfo/getProductbyID/`; 
-            axios.get(api1 + ProductID, { headers: {"x-access-token" : userToken}} ).then((result) => {
-                setProductData(result.data);
-            })
-            .catch((error) => {
-                console.log("Error Occurred !!!" + error);
-            })
-            const CategoryAPI = `${baseURL}/CategoryInfo/getCategory`;
-            axios.get( CategoryAPI, { headers: {"x-access-token" : userToken}} ).then((result) => {
-            setCategoryInfo(result.data)
-        })
-        .catch((error) => {
-            console.log("Error Occurred !!!" + error);
-        })
-        const ProductAPI = `${baseURL}/ProductInfo/getProduct`;
-        axios.get(ProductAPI, { headers: {"x-access-token" : userToken}}).then((result) => {
-            setProduct(result.data)
-        })
-        .catch((error) => {
-            console.log("Error Occurred !!!" + error);
-        })
+        const fetchData = async () => {
+            const responseProductData = await getProductbyID(ProductID)
+            setProductData(responseProductData.data)
+            const responseCategory = await getCategory()
+            setCategoryInfo(responseCategory.data)
+            const responseProduct = await getProduct()
+            setProduct(responseProduct.data)
+        }
+        fetchData();
     }, [])
 
     function changeHandler(e){
@@ -101,18 +91,14 @@ function DAEdtiProduct() {
         setCategoryData(newCategoryData);
     }
 
-    function CatSubmitHandler(e){
+    async function CatSubmitHandler(e){
         e.preventDefault()
-            const AddNewAPI = `${baseURL}/CategoryInfo/addCategory`
-            axios.post( AddNewAPI, CategoryData ).then(() => {
-                setAddNew(false);
-                window.location.assign('/edit');
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        const response = await addCategory(CategoryData);
+        console.log(response);
+        setAddNew(false);
+        window.location.assign('/edit');
     }
-
+    
     const handleCheckboxChange = (event) => {
         const value = event.target.value;
         const isChecked = event.target.checked;
@@ -124,39 +110,31 @@ function DAEdtiProduct() {
         }
       };
 
-    function updateHandler(e){
+    async function updateHandler(e){
             e.preventDefault()
             ProductData.ProductSizes = checkedValues;
             const newArrImgs = Object.values(ImageUrls);
             ProductData.ProductImageUrlArray = [...newArrImgs];
-            const api2 = `${baseURL}/ProductInfo/updateProduct/`; 
-            axios.put(api2 + ProductID, ProductData, { headers: {"x-access-token" : userToken}}).then(() => {
-                window.location.assign('/AdminDashboardRoute');
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+            const response = await updateProduct(ProductID, ProductData);
+            console.log(response);
+            window.location.assign('/AdminDashboardRoute');
     }
 
-    function deleteCat(id, Name){
+    async function deleteCat(id, Name){
         let counter = 0;
         Product.filter(ProductData => ProductData.ProductCategory === Name).map(() =>
             counter++
         )
         if(counter === 0){
-            const deleteCatAPI = `${baseURL}/CategoryInfo/deleteCategory/`
-            axios.delete(deleteCatAPI + id).then(() => {
-                window.location.assign('/edit');   
-            })
-            .catch((error) => {
-                console.log("Error Occurred !!!" + error);
-            })
+            const response = await deleteCategory(id)
+            console.log(response.data);
+            window.location.assign('/edit');  
         }else{
             alert('You Cannot Delete this Category Because it has '+counter+' Products');
         }
-        counter = 0;
     }
-  return (
+
+    return (
     <div className='MAIN_DIV'>
         <div className='CatButtons'>
         <button className='AddNew' onClick={() => (setAddNew(true))} 

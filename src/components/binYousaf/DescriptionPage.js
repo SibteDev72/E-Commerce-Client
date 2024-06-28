@@ -5,17 +5,15 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { getProduct, getProductbyID } from '../../APIs/ProductAPIs';
 import { useStore } from "../../store/cart-store";
 import { useStoreW } from "../../store/wishlist-store";
 import { useStoreP } from '../../store/pop-ups-store';
-import { baseURL } from '../../baseUrl';
 
 function DescriptionPage() {
 
     const Location = useLocation();
     const navigate = useNavigate();
-    const token = localStorage.getItem('Token');
     const ProductID = Location.state.ProductID;
 
     const[ProductDetails, setProductDetails] = useState([]);
@@ -46,25 +44,16 @@ function DescriptionPage() {
     }))
 
     useEffect(() => {
-        const DataApi = `${baseURL}/ProductInfo/getProductbyID/`
-        axios.get(DataApi + ProductID, { headers: {"x-access-token" : token}}).then(result => {
-            setProductDetails(result.data);
-            setProductSizes(result.data.ProductSizes)
-            setProductImageSource(result.data.ProductImageUrlArray);
-            setimgSrc(result.data.ProductImageUrlArray[0]);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-        
-        const ProductApi = `${baseURL}/ProductInfo/getProduct`
-        axios.get(ProductApi, { headers: {"x-access-token" : token}}).then(result => {
-            setProducts(result.data);
-        })
-        .catch(error => {
-            console.log(error)
-        })
-        
+        const fetchData = async () => {
+            const responseArtical = await getProductbyID(ProductID);
+            setProductDetails(responseArtical.data);
+            setProductSizes(responseArtical.data.ProductSizes)
+            setProductImageSource(responseArtical.data.ProductImageUrlArray);
+            setimgSrc(responseArtical.data.ProductImageUrlArray[0]);
+            const response = await getProduct()
+            setProducts(response.data);
+        }
+        fetchData();
     }, [ProductID]);
 
     useEffect(() => {
@@ -99,19 +88,6 @@ function DescriptionPage() {
         }
     }
 
-    function RelatedProduct(id){
-        navigate('/DescriptionPage', {
-            state: {
-              ProductID: id
-            }
-          })
-        window.location.assign('/DescriptionPage')
-    }
-
-    function imgHandler(Src){
-        setimgSrc(Src)
-    }
-
     function handleHoverOver(id){
         Products.map(data => {
           if(data._id === id){
@@ -128,7 +104,8 @@ function DescriptionPage() {
             setImageSource(data.ProductImageUrlArray[0]);
           }
         })
-      }
+    }
+
     const jsonObject = {
         ProductImageURL: ProductImageSource[0],
         ProductCode: ProductDetails.ProductName + selectedValue,
@@ -139,6 +116,7 @@ function DescriptionPage() {
         ProductCategory: ProductDetails.ProductCategory,
         ProductSize: selectedValue
     }
+    
     function cartButton(){
         if(selectedValue === 'Select Size' || selectedValue === null){
             alert('Please Select Size');
@@ -172,7 +150,7 @@ function DescriptionPage() {
                 <div className='imgsDiv' style = {{display: imgCount === 3 && 'none'}}>
                     {
                         ProductImageSource.map((imgSrc, index) => (
-                            <img key={index} onClick={() => imgHandler(imgSrc)} className='sliderImgs' src={imgSrc} />
+                            <img key={index} onClick={() => setimgSrc(imgSrc)} className='sliderImgs' src={imgSrc} />
                         ))
                     }
                 </div>
@@ -229,7 +207,8 @@ function DescriptionPage() {
                 category.ProductName !== ProductDetails.ProductName).slice(0, 3).map((Info, index) => (
                 <div key={index}>
                     <img className="Artical" onMouseOver={() => handleHoverOver(Info._id)} onMouseOut={() =>  handleHoverOut(Info._id)}
-                    onClick={() => RelatedProduct(Info._id)} src = {hoverStatus===Info._id && Info.ProductImageUrlArray[1] != ''? 
+                    onClick={() => navigate('/DescriptionPage', { state: { ProductID: Info._id }})} 
+                    src = {hoverStatus===Info._id && Info.ProductImageUrlArray[1] != ''? 
                     imageSource : Info.ProductImageUrlArray[0]} alt="InserImage"  /> 
                     <p className="Name">
                     {Info.ProductName}
