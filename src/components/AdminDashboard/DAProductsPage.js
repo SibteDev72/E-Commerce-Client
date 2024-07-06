@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Loader from '../Loader';
 import './DAProductsPage.scss'
 import { useNavigate } from 'react-router-dom';
 import Row from "react-bootstrap/Row";
@@ -18,6 +20,7 @@ function DAProductsPage() {
     const[ProductSizes, setProductSizes] = useState([]);
     const[ProductImageSource, setProductImageSource] = useState([]);
     const[viewStatus, setViewStatus] = useState(false);
+    const[loading, setLoading] = useState(true)
     const[imgSrc, setimgSrc] = useState();
     
     const navigate = useNavigate();
@@ -26,6 +29,7 @@ function DAProductsPage() {
       const fetchData = async () => {
         const response = await getProduct()
         setProduct(response.data)
+        setLoading(false)
       }
       fetchData();
     }, [])
@@ -49,15 +53,15 @@ function DAProductsPage() {
       console.log(response.data);
       window.location.assign('/AdminDashboardRoute')   
     }
-
   return (
     <>
+      { loading === true && <Loader loaderText='Products are Loading'/> }
       <Row style = {{display: viewStatus === true && 'none'}} className='PrdDiv'>
           {
             Product.map((Info, index) => (
               <Col key={index} sm={3} md={3} lg={3} xl={3} xxl={3}>
                 <div className='Wrap'>
-                  <img className="ProductCover" src = {Info.ProductImageUrlArray[0]} alt="InserImage"  /> 
+                  <LazyLoadImage className="ProductCover" src = {Info.ProductImageUrlArray[0]} alt="InserImage" /> 
                   <div className='PrdIcons'>
                     <VisibilityIcon onClick={() => ViewProduct(Info._id)} className='Icns'/>
                     <BorderColorIcon 

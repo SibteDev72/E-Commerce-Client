@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './HomePage.scss'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import Row from "react-bootstrap/Row";
@@ -87,7 +88,7 @@ function HomePage() {
               articals.map(data => (
                 <Col sm={6} md={4} lg={4} xl={4} xxl={4} onClick = {() => Clicked(data.CategoryName)}>
                   <div className='Wrap'>
-                    <img className ="home_art" src = {data.CategoryImageURL} /> 
+                    <LazyLoadImage className ="home_art" src = {data.CategoryImageURL} /> 
                     <p className="caption">{data.CategoryName}</p>
                   </div>
                 </Col>

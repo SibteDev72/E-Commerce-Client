@@ -1,4 +1,6 @@
 import React from 'react'
+import Loader from '../Loader';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Container from "react-bootstrap/Container";
@@ -16,6 +18,7 @@ function ProductPage() {
   const[imageSource, setImageSource] = useState();
   const[hoverStatus, setHoverStatus] = useState();
   const[NoPrdStatus, setNoPrdStatus] = useState(false);
+  const[loading, setLoading] = useState(true)
   const[articals, setArticals] = useState([]);
   const[ProductCategory, setProductCategory] = useState(localStorage.getItem('ProductCategory'));
   
@@ -32,6 +35,7 @@ function ProductPage() {
       const filteredArray = responseProduct.data.filter(PrdCat => PrdCat.ProductCategory === ProductCategory).map(data => (
         <></>
       ))
+      setLoading(false)
       if(filteredArray.length === 0){
         setNoPrdStatus(true);
       }else{
@@ -84,13 +88,15 @@ function ProductPage() {
           </ul>
         </div>
         <Container>
+          { loading === true && <Loader loaderText='Products are Loading'/> }
           <Row>
             {
-            Product.filter(cat => cat.ProductCategory === ProductCategory).map(Info => (
-              <Col onMouseOver={() => handleHoverOver(Info._id)} onMouseOut={() =>  handleHoverOut(Info._id)}
+            Product.filter(cat => cat.ProductCategory === ProductCategory).map((Info, index) => (
+              <Col style={{ display: loading === true && 'none' }}
+              key={index} onMouseOver={() => handleHoverOver(Info._id)} onMouseOut={() =>  handleHoverOut(Info._id)}
                onClick={() =>  navigate('/DescriptionPage', { state: { ProductID: Info._id } })} sm={6} md={4} lg={4} xl={4} xxl={4}>
                 <div className='Wrap'>
-                  <img className="Artical" src = {hoverStatus===Info._id && Info.ProductImageUrlArray[1] != ''? 
+                  <LazyLoadImage className="Artical" src = {hoverStatus===Info._id && Info.ProductImageUrlArray[1] != ''? 
                   imageSource : Info.ProductImageUrlArray[0]} alt="InserImage"  /> 
                   <p className="Name">{Info.ProductName}</p>
                   <p className="Prc">Rs, {Info.ProductPrice}</p>

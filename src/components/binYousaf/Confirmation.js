@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import Loader from '../Loader';
 import './Confirmation.scss'
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -24,10 +25,7 @@ function Confirmation() {
     <>
     <div className='container-wrap'>
       <div className='order_div'>
-        <div className='loader_div' style={{ display: !loader && 'none' }}>
-            <p className='loader_text'>Order is being Processed</p>
-            <div className="loader"></div>
-        </div>
+      { loader === true && <Loader loaderText='Order is being Processed'/> }
         <button className='home_btn' style={{ display: loader && 'none' }}
         onClick={() => {window.location.assign('/HomePage')}}>Continue Shopping</button>
         <div className='Detial-Div' style={{ display: loader && 'none' }}>

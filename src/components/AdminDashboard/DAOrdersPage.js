@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import React from 'react'
+import Loader from '../Loader';
 import './DAOrdersPage.scss'
 import CloseIcon from '@mui/icons-material/Close';
 import { getOrder } from '../../APIs/OrderAPIs';
@@ -8,13 +9,13 @@ import { deleteOrder } from '../../APIs/OrderAPIs';
 function DAOrdersPage() {
 
   const[OrdersList, setOrdersList] = useState([]);
-  const[loader, setLoader] = useState(true)
+  const[loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await getOrder()
       setOrdersList(response.data.reverse());
-      setLoader(false)
+      setLoading(false)
     }
     fetchData();
   }, [])
@@ -27,11 +28,8 @@ function DAOrdersPage() {
 
   return (
     <>
-    <div className='loader_div' style={{ display: !loader && 'none' }}>
-        <p className='loader_text'>Orders Loading</p>
-        <div className="loader"></div>
-    </div>
-    <div className='OrdersAdminDiv' style={{ display: loader && 'none' }}>
+    { loading === true && <Loader loaderText='Orders are Loading'/> }
+    <div style={{ display: loading === true && 'none' }} className='OrdersAdminDiv'>
       <h3>Orders List</h3>   
       <div className='OrderData'>
         {
